@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "css/clinicals.css"%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients List View</title>
+</head>
+<body>
+
+    <!-- INDEX OF THE PATIENT FILE -->
+    <h1>Patients:</h1>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Age</th>
+        </thead>
+        {% for patient  in patient_list %}
+        <tr>
+            <td>{{patient.id}}</td>
+            <td>{{patient.firstname}}</td>
+            <td>{{patient.secondname}}</td>
+            <td>{{patient.age}}</td>
+            <td><a href="update/{{patient.id}}">Update</a></td>
+            <td><a href="delete/{{patient.id}}">Delete</a></td>
+            <td><a href="adddata/{{patient.id}}">Add Data</a></td>
+            <td><a href="report/{{patient.id}}">Analyse data</a></td>
+
+        </tr>
+            
+        {% endfor %}
+    </table>
+    <br>
+    <a href="create/"> Add Patients </a>
+</body>
+</html>
